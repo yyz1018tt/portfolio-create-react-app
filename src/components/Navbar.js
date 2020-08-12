@@ -17,7 +17,7 @@ import {
 	ListItemIcon
 } from '@material-ui/core';
 import { AssignmentInd, Home, Apps, ContactMail } from '@material-ui/icons';
-import avatar from '../Avatar-Maker.png';
+import avatar from '../images/Avatar-Maker.png';
 import Footer from './Footer';
 
 //styles here
