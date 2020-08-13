@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import MobileRightMenuSlider from '@material-ui/core/Drawer';
+import Drawer from '@material-ui/core/Drawer';
 import MenuIcon from '@material-ui/icons/Menu';
 import {
 	AppBar,
@@ -16,11 +16,13 @@ import {
 	Box,
 	ListItemIcon
 } from '@material-ui/core';
-import { AssignmentInd, Home, Apps, ContactMail } from '@material-ui/icons';
+import { Home, Theaters, ContactMail, Timeline } from '@material-ui/icons';
 import avatar from '../images/Avatar-Maker.png';
 import Footer from './Footer';
 
-//styles here
+/**
+ * Styles for the Navbar and Slider
+ */
 const useStyles = makeStyles((theme) => ({
 	menuSliderContainer: {
 		width: '100%',
@@ -30,14 +32,18 @@ const useStyles = makeStyles((theme) => ({
 	avatar: {
 		display: 'block',
 		margin: '0.5rem auto',
-		width: theme.spacing(10),
-		height: theme.spacing(10)
+		width: theme.spacing(10), //10 * 8px by default
+		height: theme.spacing(10) //10 * 8px by default
 	},
 	listItem: {
 		color: '#ebd4c9'
 	}
 }));
 
+/**
+ * Four categories (objects) in the Slider, each category has three properties
+ * the objects are built for the iteration later
+ */
 const menuIcons = [
 	{
 		listIcon: <Home />,
@@ -45,12 +51,12 @@ const menuIcons = [
 		listPath: '/'
 	},
 	{
-		listIcon: <AssignmentInd />,
+		listIcon: <Timeline />,
 		listText: 'Resume',
 		listPath: '/resume'
 	},
 	{
-		listIcon: <Apps />,
+		listIcon: <Theaters />,
 		listText: 'Portfolio',
 		listPath: '/portfolio'
 	},
@@ -61,9 +67,12 @@ const menuIcons = [
 	}
 ];
 
+/**
+ * implemented the Navbar and Slider, refer to the documentation of Material UI Drawer section
+ */
 const Navbar = () => {
 	const [ state, setState ] = useState({
-		right: false
+		bottom: false
 	});
 
 	const toggleSlider = (slider, open) => () => {
@@ -71,6 +80,11 @@ const Navbar = () => {
 	};
 	const classes = useStyles();
 
+	/**
+	 * iterated through the objects decleared above with react router
+	 * the slide will slide from bottom for the user experience in case of user use a small size monitor
+	 * @param {state} slider the anchor that decides from which way the slide is going to slide in
+	 */
 	const sideList = (slider) => (
 		<Box className={classes.menuSliderContainer} onClick={toggleSlider(slider, false)} component="div">
 			<Avatar className={classes.avatar} src={avatar} alt="Yuze Yang" />
@@ -86,21 +100,24 @@ const Navbar = () => {
 		</Box>
 	);
 
+	/**
+	 * Refer to the documentation of Material UI as well
+	 */
 	return (
 		<Box component="nav">
 			<AppBar position="static" style={{ background: '#76323F' }}>
 				<Toolbar>
-					<IconButton onClick={toggleSlider('right', true)}>
+					<IconButton onClick={toggleSlider('bottom', true)}>
 						<MenuIcon style={{ color: '#ebd4c9' }} />
 					</IconButton>
 					<Typography variant="h6" style={{ color: '#ebd4c9' }}>
 						Yuze's Portfolio
 					</Typography>
 
-					<MobileRightMenuSlider anchor="bottom" open={state.right} onClose={toggleSlider('right', false)}>
-						{sideList('right')}
+					<Drawer anchor={'bottom'} open={state.bottom} onClose={toggleSlider('bottom', false)}>
+						{sideList('bottom')}
 						<Footer />
-					</MobileRightMenuSlider>
+					</Drawer>
 				</Toolbar>
 			</AppBar>
 		</Box>

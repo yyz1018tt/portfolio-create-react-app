@@ -18,6 +18,9 @@ const Home = () => {
 		<div>
 			<Navbar />
 			<Header />
+			{/**
+			 * adding particle animation to the background
+			 */}
 			<Particles
 				canvasClassName={classes.particlesCanva}
 				params={{

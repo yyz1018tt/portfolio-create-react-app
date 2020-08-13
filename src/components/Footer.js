@@ -6,15 +6,22 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 
 const useStyles = makeStyles({
 	root: {
+		/**
+		 * styles applied to the root element
+		 */
 		'& .MuiBottomNavigationAction-root': {
 			minWidth: 0,
 			maxWidth: 250
 		},
+
+		/**
+		 * styles applied to the root element
+		 */
 		'& .MuiSvgIcon-root': {
 			fill: '#ebd4c9',
 			'&:hover': {
 				fill: '#ebd4c9',
-				fontSize: '1.8rem'
+				fontSize: '2rem'
 			}
 		}
 	}

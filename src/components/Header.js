@@ -6,9 +6,9 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
 	avatar: {
-		width: theme.spacing(15),
-		height: theme.spacing(15),
-		margin: theme.spacing(1)
+		width: theme.spacing(15), //15 * 8px by default
+		height: theme.spacing(15), //15 * 8px by default
+		margin: theme.spacing(1) // 8px by default
 	},
 	title: {
 		color: 'white'
@@ -24,13 +24,17 @@ const useStyles = makeStyles((theme) => ({
 		transform: 'translate(-50%, -50%)',
 		width: '100vw',
 		textAlign: 'center',
-		zIndex: 1
+		zIndex: 1 //make sure the text and the avatar are on the top layer
 	}
 }));
 
 const Header = () => {
 	const classes = useStyles();
 
+	/**
+	 * <Typed> imported from react-type, the backSpeed param decides how fast
+	 * the text will be removed so the next text can appear
+	 */
 	return (
 		<Box className={classes.typedContainer}>
 			<Grid container justify="center">

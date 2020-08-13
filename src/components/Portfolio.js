@@ -75,15 +75,22 @@ const Portfolio = () => {
 				canvasClassName={classes.particlesCanva}
 				params={{
 					particles: {
+						/**
+						 * Density determines the number of particles that will be packed together in a given area
+						 */
 						number: {
 							value: 45,
 							density: {
 								enable: true,
-								value_area: 900
+								value_area: 800
 							}
 						},
 						shape: {
 							type: 'circle',
+
+							/**
+							 * adding an outline to a particale with given width and color
+							 */
 							stroke: {
 								width: 4,
 								color: 'white'
@@ -93,10 +100,10 @@ const Portfolio = () => {
 							value: 5,
 							random: true,
 							anim: {
-								enable: false,
-								speed: 0.5,
+								enable: true,
+								speed: 0.8,
 								size_min: 0.1,
-								sync: false
+								sync: false //if ture, change the size of all elements simultaneously
 							}
 						},
 						opacity: {
@@ -106,14 +113,16 @@ const Portfolio = () => {
 								enable: true,
 								speed: 1,
 								opacity_min: 0.1,
-								sync: false
+								sync: false //animate the opacity of all particles at the same time
 							}
 						}
 					}
 				}}
 			/>
 			<Grid container justify="center" alignItems="center">
-				{/*Project 1*/}
+				{/**
+				 * set breakpoint for the different layouts, similar to Bootstrap
+				 */}
 				<Grid item xs={12} sm={6} md={6}>
 					<Card className={classes.root}>
 						<CardHeader title="Water Safety Project" />

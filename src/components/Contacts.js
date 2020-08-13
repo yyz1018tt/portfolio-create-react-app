@@ -4,6 +4,9 @@ import { TextField, Typography, Button, Grid, Box } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
 import Navbar from './Navbar';
 
+/**
+ * custumize TextField with withStyles
+ */
 const InputField = withStyles({
 	root: {
 		'& label.Mui-focused': {
@@ -12,6 +15,8 @@ const InputField = withStyles({
 		'& label': {
 			color: '#76323F'
 		},
+
+		//Styles applied to the root element.
 		'& .MuiOutlinedInput-root': {
 			'& fieldset': {
 				borderColor: '#76323F'
